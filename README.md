@@ -1,4 +1,39 @@
 # WhatsApp Chatbot
+This repository contains a Node.js-based WhatsApp chatbot that delivers **AI-powered, context-aware medical support** for patients undergoing surgical procedures. It provides intelligent responses based on real-time patient data and surgery-specific clinical protocols to assist with **pre- and post-operative care**, as well as general health queries.
+
+---
+
+## ✨ Features
+
+- **GPT-4-Driven Responses**  
+  Integrates OpenAI’s GPT-4 API to deliver high-quality, concise medical conversations tailored to the patient’s clinical context.
+
+- **WhatsApp Integration**  
+  Uses the WhatsApp Business Cloud API to enable real-time messaging with patients.
+
+- **Patient Data Personalization**  
+  Dynamically retrieves patient records from a CSV database and builds responses accordingly.
+
+- **Surgery-Specific Q&A Engine**  
+  Maps patient surgery types to dedicated CSV files containing curated doctor-provided Q&A content.
+
+- **Session Memory**  
+  Maintains short-term chat history (up to 10 exchanges) to preserve conversational context across multiple turns.
+
+---
+
+## 🧪 **Tech Stack**
+- Node.js (Express.js)
+
+- OpenAI GPT-4 API
+
+- WhatsApp Cloud API
+
+- MongoDB (optional, currently using CSV)
+
+- CSV Parser
+
+- Dotenv for config
 
 ## Installation
 
