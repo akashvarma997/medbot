@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { sendWhatsAppMessage } = require('../services/whatsapp');
-const { getPatientData } = require('../services/sheets');
+const { getPatientData, getSurgicalQnA } = require('../services/sheets');
 const { buildPrompt, getAIResponse } = require('../services/openai');
 
 const sessions = new Map();
@@ -42,8 +42,18 @@ router.post('/webhook', async (req, res) => {
       await sendWhatsAppMessage(from, 'Sorry, we could not find your medical information.');
       return res.sendStatus(200);
     }
+    const { fullRecord, prescription, raw } = patientData || {};
+    let qnaSection = '';
+    if (raw['Surgery Type']) {
+      const qna = await getSurgicalQnA(raw['Surgery Type']);
+      if (qna) {
+        console.log('Surgical Q&A found:', qna);
+        qnaSection = `\n\nDoctor-Provided Surgical Q&A for "${raw['Surgery Type']}":\n${qna}`;
+      }
+    }
 
-    const prompt = buildPrompt(patientData, session, userMessage);
+    const prompt = buildPrompt(patientData, session, userMessage, qnaSection);
+    console.log('Prompt for OpenAI:', JSON.stringify(prompt, null, 2));
     const answer = await getAIResponse(prompt);
     await sendWhatsAppMessage(from, answer);
 

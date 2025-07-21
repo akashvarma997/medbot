@@ -1,0 +1,26 @@
+Section,Question,Answer
+Treatment Philosophy,What is your general surgical approach for ACL tears?,I prefer anatomical single-bundle ACL reconstruction using hamstring autografts. Precision in tunnel placement and early rehab are key.
+Treatment Philosophy,"Do you delay surgery in certain cases (e.g., swelling, muscle atrophy)?","Yes, I delay surgery until acute inflammation subsides, ideally 2–3 weeks post-injury to allow quad activation and reduce stiffness risk."
+Post-op Protocol,When can the patient start weight-bearing post ACL reconstruction?,Toe-touch weight-bearing with brace from Day 1. Partial weight-bearing by Week 2. Full weight-bearing by Week 4 depending on muscle control.
+Post-op Protocol,When should range-of-motion exercises begin?,"ROM exercises start from Day 2, focusing on 0–90° initially. Gradual progression beyond 90° begins after 2–3 weeks."
+Post-op Protocol,"Typical time for return to jogging, sports, full flexion?",Jogging typically starts at 10–12 weeks. Pivot sports at 6–8 months. Full flexion usually regained by 5–6 weeks.
+Post-op Protocol,How long is a knee brace used post-op?,Knee brace is mandatory for 2–3 weeks to avoid hyperextension and graft strain during early neuromuscular control development.
+Patient Education,What are the most common patient doubts or fears?,"They often ask: ‘Why is my knee clicking?’, ‘Is swelling normal?’, ‘When can I walk normally?’ or ‘Will my graft fail?’"
+Patient Education,What symptoms should the patient consider normal during early recovery?,"Mild swelling, clicking, muscle twitching, and stiffness after inactivity are common. Reassure unless accompanied by warmth, redness, or severe pain."
+Communication Style,Preferred tone when addressing pain or anxiety?,"Supportive, factual and calming. Patients appreciate clarity and step-by-step progress tracking."
+Communication Style,"Should the bot coach the patient on lifestyle (e.g., weight, posture)?","Yes, the bot should gently reinforce posture, quad strength, nutrition and weight control especially in delayed recovery."
+Rehabilitation Plan,"What exercises do you recommend at early, mid, and late phases of rehab?","Early (Week 1–2): Ankle pumps, quad sets, heel slides. Mid (Week 3–6): SLR, mini squats, step-ups. Late (Post Week 12): balance training, sport drills."
+Rehabilitation Plan,Do you prefer supervised physiotherapy or is home-based acceptable?,Supervised physiotherapy is preferred initially. Home-based programs acceptable after week 4 if compliance is high and no complications arise.
+Escalation Criteria,Which signs must trigger an immediate alert to you or the clinic?,"Signs like persistent fever, wound discharge, inability to lift leg, severe swelling after Day 7 should be flagged immediately."
+Escalation Criteria,"What signs are ‘gray zone’ — not urgent, but require monitoring?","Swelling at end of day, tightness in morning, clicking without instability — these should be monitored and reported if worsening."
+Behavioral Coaching,What are typical patient behaviors that risk recovery?,"Non-compliance with brace, skipping PT, attempting to jog early, or stopping pain meds prematurely can hinder recovery."
+Behavioral Coaching,What motivates your patients best in the rehab phase?,"Setting micro-goals (e.g., 'achieve 90° flexion by Day 10'), visual progress (charts, timelines), and motivational messages help athletes and young patients."
+Edge Cases & Modifications,"Do you change your approach for obese, elderly or athletes?",Yes — athletes get an accelerated but stricter program. Obese or elderly patients are moved slower with focus on stability and fall prevention.
+Edge Cases & Modifications,Are there any treatments or movements you forbid in specific populations?,I avoid resisted open chain exercises in early phase. Pivoting or sudden deceleration drills are restricted until 5–6 months post-op.
+Examples & Heuristics,"Can you describe a patient who recovered extremely well, and why?","One 26-year-old patient with regular PT, strict adherence, and optimistic attitude returned to competitive football in 7 months without complications."
+Critical Escalation Cases,List scenarios where the bot must NOT answer and instead connect the patient with the doctor.,These scenarios are red flags and should bypass automated response:
+Critical Escalation Cases,High fever (>101°F) post-surgery,Yes – could indicate infection or systemic response. Must refer immediately.
+Critical Escalation Cases,Persistent wound discharge or foul smell,Yes – sign of possible wound infection or graft complication.
+Critical Escalation Cases,Inability to perform straight leg raise by Day 10,Yes – potential nerve damage or failed quadriceps recovery.
+Critical Escalation Cases,Severe knee swelling with pain after Day 7,"Yes – needs clinical evaluation for hemarthrosis, inflammation or graft issue."
+Critical Escalation Cases,"Acute instability or re-injury during rehab (e.g., popping sound or giving way)",Yes – could mean graft failure or secondary injury. Requires imaging and surgeon input.

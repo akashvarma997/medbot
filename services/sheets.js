@@ -1,12 +1,42 @@
-// services/sheets.js
 const fs = require('fs');
 const csv = require('csv-parser');
 const path = require('path');
 
-// Path to your local CSV file
-const csvFilePath = path.join(__dirname, '..', 'demo_patient_data_extended.csv');
+// Path to the local CSV file
+const csvFilePath = path.join(__dirname, '..', 'ACL Patient Database - Sheet1.csv');
 
-// Helper function to read data from local CSV
+// New: Function to get surgery-specific Q&A from the respective CSV file
+async function getSurgicalQnA(surgeryType) {
+  return new Promise((resolve, reject) => {
+    const fileName = surgeryType.toLowerCase().replace(/[^a-z0-9]/gi, '_') + '.csv';
+    const csvFilePath = path.join(__dirname, '..', fileName);
+
+    if (!fs.existsSync(csvFilePath)) {
+      resolve(null);
+      return;
+    }
+
+    const qna = [];
+
+    fs.createReadStream(csvFilePath)
+      .pipe(csv())
+      .on('data', (row) => {
+        if (row['Section'] && row['Question'] && row['Answer']) {
+          qna.push(`Question tag: ${row['Section'].trim()}\nQ: ${row['Question'].trim()}\nA: ${row['Answer'].trim()}`);
+        }
+      })
+      .on('end', () => {
+        resolve(qna.join('\n\n'));
+      })
+      .on('error', (err) => {
+        console.error('CSV Read Error:', err.message);
+        reject(null);
+      });
+  });
+}
+
+
+// Function to fetch full patient record by phone number
 async function getPatientData(phone) {
   return new Promise((resolve, reject) => {
     const results = [];
@@ -17,14 +47,19 @@ async function getPatientData(phone) {
         results.push(row);
       })
       .on('end', () => {
-        const patient = results.find(r => r["Phone Number"] === phone);
+        const patient = results.find(r => r["Contact no"] === phone);
         if (patient) {
+          // Format the full row as key-value string
+          const formattedData = Object.entries(patient)
+            .map(([key, value]) => `${key} = ${value}`)
+            .join('\n');
+            // console.log("Formatted Data:", formattedData);
           resolve({
-            prescription: patient["Prescription"] || '',
-            history: patient["Medical History"] || ''
+            fullRecord: formattedData,
+            raw: patient
           });
         } else {
-          resolve(null); // not found
+          resolve(null);
         }
       })
       .on('error', (err) => {
@@ -34,4 +69,4 @@ async function getPatientData(phone) {
   });
 }
 
-module.exports = { getPatientData };
+module.exports = { getPatientData, getSurgicalQnA };
